@@ -15,11 +15,11 @@ public class EmailTarget {
     public void sendEmail(String title, String body) {
         Email email = new SimpleEmail();
         try {
-            email.setHostName("smtp.googlemail.com");
-            email.setSmtpPort(465);
-            email.setAuthenticator(new DefaultAuthenticator("test28145@gmail.com", "putyourownpasswordhere"));
+            email.setHostName(Settings.AUTH_SERVER_ADDRESS);
+            email.setSmtpPort(Settings.AUTH_SERVER_PORT);
+            email.setAuthenticator(new DefaultAuthenticator(Settings.AUTH_EMAIL, Settings.AUTH_EMAIL_PASSWORD));
             email.setSSLOnConnect(true);
-            email.setFrom("test28145@gmail.com");
+            email.setFrom(Settings.AUTH_EMAIL);
             email.setSubject(title);
             email.setMsg(body);
             email.addTo(this.email);
